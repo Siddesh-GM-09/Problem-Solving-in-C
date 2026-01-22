@@ -20,3 +20,39 @@ int main(){
         }
     }
 }
+void insertNode(BST** ptr,int data){
+    if(*ptr==NULL){
+        *ptr=calloc(1,sizeof(BST));
+        (*ptr)->num=data;
+    }
+    else if(data<(*ptr)->num){
+        insertNode(&((*ptr)->left),data);
+    }
+    else if(data>(*ptr)->num){
+        insertNode(&((*ptr)->right),data);
+    }
+    else{
+        printf("Duplicates Not Allowed\n");
+    }
+}
+void inOrder(BST *ptr){
+    if(ptr){
+        inOrder(ptr->left);
+        printf("%d ",ptr->num);
+        inOrder(ptr->right);
+    }
+}
+void preOrder(BST *ptr){
+    if(ptr){
+        printf("%d ",ptr->num);
+        preOrder(ptr->left);
+        preOrder(ptr->right);
+    }
+}
+void postOrder(BST *ptr){
+    if(ptr){
+        postOrder(ptr->left);
+        postOrder(ptr->right);
+        printf("%d ",ptr->num);
+    }
+}
