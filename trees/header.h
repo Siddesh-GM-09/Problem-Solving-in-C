@@ -13,3 +13,4 @@ void insertNode(BST**,int);
 void inOrder(BST*);
 void preOrder(BST*);
 void postOrder(BST*);
+BST* searchNode(BST *,int);

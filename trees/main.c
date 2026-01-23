@@ -1,9 +1,9 @@
 #include "header.h"
 int main(){
     int op,n;
-    BST* root=NULL;
+    BST* root=NULL,*r;
     while(1){
-        printf("1.Insert 2.In Order 3.Pre Order 4.Post Order 5.exit\n");
+        printf("1.Insert 2.In Order 3.Pre Order 4.Post Order 5.Search Number 6.exit\n");
         scanf("%d",&op);
         switch(op){
             case 1:scanf("%d",&n);
@@ -15,7 +15,16 @@ int main(){
                 break;
             case 4:postOrder(root);
                 break;
-            case 5:exit(0);
+            case 5:printf("Enter the number to search : ");
+                scanf("%d",&n);
+                r=searchNode(root,n);
+                if(r){
+                    printf("Number is found\n");
+                }
+                else{
+                    printf("Number not found\n");
+                }
+            case 6:exit(0);
             default:printf("Enter valid Options\n");
         }
     }
@@ -54,5 +63,24 @@ void postOrder(BST *ptr){
         postOrder(ptr->left);
         postOrder(ptr->right);
         printf("%d ",ptr->num);
+    }
+}
+BST*  searchNode(BST *ptr,int data){
+    if(ptr){
+            if(ptr->num==data){
+        return ptr;
+        }
+        else if(data<ptr->num){
+            searchNode(ptr->left,data);
+        }
+        else if(data>ptr->num){
+            searchNode(ptr->right,data);
+        }
+        else{
+            return 0;
+        }
+    }
+    else{
+        return 0;
     }
 }
