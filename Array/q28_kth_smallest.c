@@ -28,16 +28,19 @@ int main(){
     return 0;
 }
 int KSmallest(int* arr,int low,int high,int k){
-    int p=part(arr,low,high);
-    if(p==k-1){
-        return arr[p];
+    if(low<high){
+        int p=part(arr,low,high);
+        if(p==k-1){
+            return arr[p];
+        }
+        else if(p>k-1){
+            return KSmallest(arr,low,p-1,k);
+        }
+        else{
+            return KSmallest(arr,p+1,high,k);
+        }
     }
-    else if(p>k-1){
-        return KSmallest(arr,low,p-1,k);
-    }
-    else{
-        return KSmallest(arr,p+1,high,k);
-    }
+    return -1;
 }
 int part(int* arr,int low,int high){
     int pivot=arr[high];
