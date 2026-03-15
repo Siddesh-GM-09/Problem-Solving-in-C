@@ -32,7 +32,7 @@ int main(){
 void quickSort(int* arr,int low,int high){
     if(low<high){
         int p=part(arr,low,high);
-        quickSort(arr,low,p);
+        quickSort(arr,low,p-1);
         quickSort(arr,p+1,high);
     }
 }
